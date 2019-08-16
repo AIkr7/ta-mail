@@ -159,7 +159,7 @@ STATIC_URL = '/static/'
 # sentry
 if PRODUCTION:
     sentry_sdk.init(
-        "your dsn",
+        env('SENTRY_DSN'),
         integrations=[DjangoIntegration()]
     )
 
