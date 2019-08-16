@@ -1,0 +1,43 @@
+def send_simple_message():
+    return requests.post(
+        "https://api.mailgun.net/v3/sandbox5e3adaf3cb304e408a8d3b468cab4c80.mailgun.org/messages",
+        auth=("api", "e8d18c8d545bf9d79a13cf6a5f54010c-73ae490d-4bedd095"),
+        data={"from": "Excited User <mailgun@sandbox5e3adaf3cb304e408a8d3b468cab4c80.mailgun.org>",
+              "to": ["wisnu.under@gmail.com"],
+              "subject": "Hello",
+              "text": "Testing some Mailgun awesomness!"})
+
+from backend.apps.matchmaking.services import MatchmakingNotificationService
+import json
+form_response = json.loads('''{
+            "form_id": "lT4Z3j",
+            "token": "a3a12ec67a1365927098a606107fac15",
+            "submitted_at": "2018-01-18T18:17:02Z",
+            "landed_at": "2018-01-18T18:07:02Z",
+            "definition": {
+                "id": "lT4Z3j",
+                "title": "Webhooks example",
+                "fields": [
+                    {
+                        "id": "SMEUb7VJz92Q",
+                        "title": "Email Kamu",
+                        "type": "email",
+                        "ref": "email_customer",
+                        "allow_multiple_selections": false,
+                        "allow_other_choice": false
+                    }
+                ]
+            },
+            "answers": [
+                {
+                    "type": "email",
+                    "email": "wisnu.under@gmail.com",
+                    "field": {
+                        "id": "SMEUb7VJz92Q",
+                        "type": "email"
+                    }
+                }
+            ]
+        }''')
+service = MatchmakingNotificationService()
+service.send_response_for_tutor_request(form_response)

@@ -11,8 +11,8 @@ class MatchmakingNotificationService:
                 return f
             return None
 
-    def _get_email_customer(self, answers: list, definition: dict):
-        EMAIL_REF = 'email_customer'
+    def _get_email_registration(self, answers: list, definition: dict):
+        EMAIL_REF = 'email_registration'
         customer_email_def = self._get_typeform_definition_by_qref(
             EMAIL_REF, definition.get('fields'))
 
@@ -34,7 +34,7 @@ class MatchmakingNotificationService:
         sender_address = 'tamansiswa.indo'
         answer = form_response.get('answers')
         definition = form_response.get('definition')
-        customer_email = self._get_email_customer(answer, definition)
+        customer_email = self._get_email_registration(answer, definition)
 
         subject = 'Pencarian Tutor sedang diproses'
         content = self._tmp_generate_html(answer, definition)
