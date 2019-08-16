@@ -30,6 +30,7 @@ Django = "==2.2"
 Faker = "==1.0.7"
 django-heroku = "*"
 gunicorn = "*"
+sentry-sdk = "*"
 
 [requires]
 python_version = "3.6"

@@ -14,10 +14,13 @@ import os
 import sys
 import environ
 
+import sentry_sdk
 import django_heroku
 
 from datetime import timedelta
 from django.utils.translation import gettext_lazy as _
+from sentry_sdk.integrations.django import \
+    DjangoIntegration
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -152,6 +155,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # APPS CONFIG
+
+# sentry
+if PRODUCTION:
+    sentry_sdk.init(
+        "your dsn",
+        integrations=[DjangoIntegration()]
+    )
 
 # Email
 if PRODUCTION:
