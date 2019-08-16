@@ -18,7 +18,7 @@ class MatchmakingNotificationServiceTestCase(TestCase):
                         "id": "SMEUb7VJz92Q",
                         "title": "Email Kamu",
                         "type": "email",
-                        "ref": "email_customer",
+                        "ref": "email_registration",
                         "allow_multiple_selections": false,
                         "allow_other_choice": false
                     }
