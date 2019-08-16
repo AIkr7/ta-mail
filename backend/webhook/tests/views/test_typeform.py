@@ -1,4 +1,7 @@
 import json
+import hmac
+import hashlib
+import base64
 
 from django.conf import settings
 from django.test import TestCase
@@ -9,15 +12,16 @@ from rest_framework import status
 
 class MatchmakingNotificationServiceTestCase(TestCase):
 
-    def setUp(self):
-        self.form_response = {
-            "event_id": "01DJDG5S6JTG0D4VGB3Y3K3X2M",
+    def test_send_response_typeform_matchmaking_student(self):
+        url = reverse('typeform-matchmaking-student')
+        data = {
+            "event_id": "01DJDHXETDWY0H6T4N6P2ZEQBB",
             "event_type": "form_response",
             "form_response": {
                 "form_id": "cJKPNZ",
-                "token": "01DJDG5S6JTG0D4VGB3Y3K3X2M",
-                "landed_at": "2019-08-16T15:19:14Z",
-                "submitted_at": "2019-08-16T15:19:14Z",
+                "token": "z08q06tbnl6jg53un7z08q068l9uez1f",
+                "landed_at": "2019-08-16T15:49:27Z",
+                "submitted_at": "2019-08-16T15:49:38Z",
                 "definition": {
                     "id": "cJKPNZ",
                     "title": "Daftar Matchmaking Siswa",
@@ -41,7 +45,7 @@ class MatchmakingNotificationServiceTestCase(TestCase):
                 "answers": [
                     {
                         "type": "text",
-                        "text": "Lorem ipsum dolor",
+                        "text": "Wisnu Test",
                         "field": {
                             "id": "RWtYIE4ZZ9nJ",
                             "type": "short_text",
@@ -50,7 +54,7 @@ class MatchmakingNotificationServiceTestCase(TestCase):
                     },
                     {
                         "type": "email",
-                        "email": "an_account@example.com",
+                        "email": "wisnuprama014@gmail.com",
                         "field": {
                             "id": "yXz5sq71BEW9",
                             "type": "email",
@@ -58,13 +62,10 @@ class MatchmakingNotificationServiceTestCase(TestCase):
                         }
                     }
                 ]
-            }
+            },
         }
-
-    def test_send_response_typeform_matchmaking_student(self):
-        url = reverse('typeform-matchmaking-student')
-        data = self.form_response.copy()
-        encoded_secret = 'sha256=MLaRuhw63AbfMCqNFwtrV+D9FmKbZ1q0YQqwSVMGsuY='
+        encoded_secret = 'sha256=XYrHQ0j6kWZPe1zgfGJL2mJaqHb+lkRJPXwVKrV9JSE='
         response = self.client.post(
-            url, data=data, HTTP_TYPEFORM_SIGNATURE=encoded_secret, format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+            url, data=data, HTTP_TYPEFORM_SIGNATURE=encoded_secret, content_type='application/json')
+        self.assertEqual(response.status_code,
+                         status.HTTP_200_OK, str(response.content))

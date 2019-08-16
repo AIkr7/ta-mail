@@ -1,3 +1,4 @@
+from rest_framework.exceptions import ValidationError
 from backend.clients.gmail import GmailManager
 
 
@@ -9,15 +10,14 @@ class MatchmakingNotificationService:
         for f in fields:
             if f.get('ref') == qref:
                 return f
-            return None
+        return None
 
     def _get_email_registration(self, answers: list, definition: dict):
         EMAIL_REF = 'email_registration'
-        customer_email_def = self._get_typeform_definition_by_qref(
-            EMAIL_REF, definition.get('fields'))
+        customer_email_def = self._get_typeform_definition_by_qref(EMAIL_REF, definition.get('fields'))
 
         if customer_email_def is None:
-            raise Exception('No Customer Email Definition Found')
+            raise ValidationError('No Customer Email Definition Found')
 
         customer_email_field_id = customer_email_def.get('id')
         for ans in answers:
@@ -25,7 +25,7 @@ class MatchmakingNotificationService:
                 # people may forget to set type to email field
                 return ans.get('email', ans.get('text'))
 
-        raise Exception('No Customer Email Found')
+        raise ValidationError('No Customer Email Found')
 
     def _tmp_generate_html(self, answers, definition):
         return '<html><h1>Test Template</h1></html>'
