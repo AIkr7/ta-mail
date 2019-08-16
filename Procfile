@@ -1,1 +1,1 @@
-web: make production
+web: gunicorn backend.wsgi --log-file -
