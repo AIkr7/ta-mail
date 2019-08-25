@@ -52,7 +52,7 @@ class TutorRegistrationNotificationService:
 
     def generate_html_message(self, answers: list):
         return '''<div dir="ltr">Thank you for your registration as a tutor in TamanTutors
-by TamanSiswa.<div><br><div>We have reviewed your application and it has been a pleasure to read your ideas about education.
+by TamanSiswa.<div><br><div>We are now reviewing your application and it has been a pleasure to read your ideas about education.
 We surely can\'t wait to start helping more people to enjoy their learning experience with you.</div>
 <div></div><div><br></div><div></div><div><br></div><div>Cheers!</div><div><div><div><div><br>
 <div dir="ltr" class="gmail_signature"><div dir="ltr"><div><div dir=
