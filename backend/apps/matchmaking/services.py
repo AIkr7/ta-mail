@@ -28,7 +28,7 @@ class MatchmakingNotificationService:
         raise ValidationError('No Customer Email Found')
 
     def _tmp_generate_html(self, answers, definition):
-        return '<html><h1>Test Template</h1></html>'
+        return '<html><p>Mohon menunggu hingga team kami menghubungi anda melalui email ini.</p></html>'
 
     def send_response_for_tutor_request(self, form_response: dict):
         sender_address = 'tamansiswa.indo'
@@ -42,4 +42,23 @@ class MatchmakingNotificationService:
         reply_to = ['tamansiswa.indo+helpdesk@gmail.com']
         email = self.email_manager.create_email_messsage(
             subject=subject, body=content, to=[customer_email], bcc=bcc, reply_to=reply_to)
+        self.email_manager.send_message(email)
+
+
+class TutorRegistrationNotificationService:
+
+    email_manager = GmailManager()
+
+    def generate_html_message(self, answers: list):
+        return '<html><p>Mohon menunggu hingga team kami menghubungi anda melalui email ini.</p></html>'
+
+    def send_form_registration_feedback(self, email_respondent:str, answers: list):
+        sender_address = 'tamansiswa.indo'
+
+        subject = 'Welcome!'
+        content = self.generate_html_message(answers)
+        bcc = ['chef.riskyaltaresh@gmail.com']
+        reply_to = ['tamansiswa.indo+helpdesk@gmail.com']
+        email = self.email_manager.create_email_messsage(
+            subject=subject, body=content, to=[email_respondent], bcc=bcc, reply_to=reply_to)
         self.email_manager.send_message(email)

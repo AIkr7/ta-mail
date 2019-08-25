@@ -10,7 +10,7 @@ from django.urls import reverse
 from rest_framework import status
 
 
-class MatchmakingNotificationServiceTestCase(TestCase):
+class MatchmakingTypeformWebhookTestCase(TestCase):
 
     def test_send_response_typeform_matchmaking_student(self):
         url = reverse('typeform-matchmaking-student')
