@@ -60,9 +60,9 @@ class TutorRegistrationNotificationService:
         ="ltr"><font color="#6aa84f" size="6" face="tahoma, sans-serif"><b>
         Ares</b></font><div><font color="#000000" size="4" face="tahoma, sans-serif"><b>CEO &amp; Co-founder, TamanSiswa</b>
         </font></div><div><font color="#000000" size="4" face="tahoma, sans-serif"><br></font></div><div>
-        <font color="#000000" face="tahoma, sans-serif">LINE : @tamansiswa</font></div><div>
-        <font color="#000000" face="tahoma, sans-serif">Instagram: @tamansiswa_</font></div><div>
-        <font color="#000000" face="tahoma, sans-serif">Email :<a href="mailto:tamansiswa.indo@gmail.com" target="_blank">tamansiswa.indo@gmail.com</a></font></div>
+        <font color="#000000" face="tahoma, sans-serif">LINE : <a href="http://line.me/ti/p/~tamansiswa" target="_blank">@tamansiswa</a></font></div><div>
+        <font color="#000000" face="tahoma, sans-serif">Instagram : <a href="https://www.instagram.com/tamansiswa_/" target="_blank">@tamansiswa_</a></font></div><div>
+        <font color="#000000" face="tahoma, sans-serif">Email : <a href="mailto:tamansiswa.indo@gmail.com" target="_blank">tamansiswa.indo@gmail.com</a></font></div>
         <div><font color="#000000" face="tahoma, sans-serif"><br></font></div>
         <div><font color="#000000" face="tahoma, sans-serif">Taman-Siswa.com</font></div><div>
         <font color="#000000" face="tahoma, sans-serif">(Available Soon)</font>
