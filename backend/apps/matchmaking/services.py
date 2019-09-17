@@ -47,10 +47,10 @@ class MatchmakingNotificationService:
 
 
     def generate_html_message(self, answer: list):
-        return '''<div dir="ltr">Thank you for your registration as a tutor in TamanTutors by TamanSiswa.</div>
-        <br><div>We are now reviewing your application and it has been a pleasure for us to read your ideas about education.
-        We surely can't wait to start helping more people to enjoy their learning experience with the most dedicated tutor.</div>
-        <br><div>We'll contact you as soon as possible to inform whether you're selected into interview or not.</div>
+        return '''<div dir="ltr">Halo Tutee, terima kasih sudah menjadikan TamanTutors menjadi teman belajarmu. 
+        Pesananmu sudah diproses oleh admin. Selanjutnya admin akan mencocokkan jadwalmu dengan Tutor yang akan mengajar. 
+        Setelah kecocokan jadwal dan Tutor sudah berhasil dilakukan, admin akan menghubungimu melalui Official Account Line untuk memberikan jadwal dan tempat belajarmu. 
+        Selamat belajar Tutee :)</div>
         <div></div><div><br></div><div></div><div><br></div><div>Cheers!</div><div><div><div><div><br>
         <div dir="ltr" class="gmail_signature"><div dir="ltr"><div><div dir=
         ="ltr"><font color="#6aa84f" size="6" face="tahoma, sans-serif"><b>
@@ -67,9 +67,9 @@ class MatchmakingNotificationService:
     def send_tutor_request_response(self, email_respondent: str, answers: list):
         sender_address = 'tamansiswa.indo'
 
-        subject = 'Tutor Registration is Being Processed'
+        subject = 'Pencarian Tutor sedang diproses'
         content = self.generate_html_message(answers)
-        bcc = ['moch.riskyaltaresh@gmail.com', 'hnthalia@gmail.com']
+        bcc = ['moch.riskyaltaresh@gmail.com', 'nisrina.akalusyamoktika@gmail.com']
         reply_to = ['tamansiswa.indo+helpdesk@gmail.com']
         email = self.email_manager.create_email_messsage(
             subject=subject, body=content, to=[email_respondent], bcc=bcc, reply_to=reply_to)
