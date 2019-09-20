@@ -64,7 +64,7 @@ class MatchmakingNotificationService:
         <font color="#000000" face="tahoma, sans-serif">(Available Soon)</font>
         </div></div></div></div></div></div></div></div></div></div></div>'''
 
-    def send_tutor_request_response(self, email_respondent: str, answers: list):
+    def send_tutee_matchmaking_form_response(self, email_respondent: str, answers: list):
         sender_address = 'tamansiswa.indo'
 
         subject = 'Pencarian Tutor sedang diproses'

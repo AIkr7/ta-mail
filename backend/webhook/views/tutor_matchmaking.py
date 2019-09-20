@@ -20,5 +20,5 @@ class MatchMakingWebhook(APIView):
         email = data.get('form_response').get('email_respondent')
         answers = data.get('form_response').get('answers')
         MatchmakingNotificationService()\
-            .send_tutor_request_response(email, answers)
+            .send_tutee_matchmaking_form_response(email, answers)
         return Response(data="OK", status=status.HTTP_200_OK)
