@@ -7,4 +7,6 @@ urlpatterns = [
          name='typeform-matchmaking-student'),
     path('googleform/tutor/registration', googleform.TutorRegistrationWebhook.as_view(),
          name='googleform-tutor-registration'),
+     path('googleform/tutee/matchmaking', googleform.MatchMakingWebhook.as_view(),
+          name='googleform-matchmaking')
 ]

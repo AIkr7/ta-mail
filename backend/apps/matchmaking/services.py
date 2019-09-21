@@ -46,6 +46,35 @@ class MatchmakingNotificationService:
         self.email_manager.send_message(email)
 
 
+    def generate_html_message(self, answer: list):
+        return '''<div dir="ltr">Halo Tutee, terima kasih sudah menjadikan TamanTutors menjadi teman belajarmu. 
+        Pesananmu sudah diproses oleh admin. Selanjutnya admin akan mencocokkan jadwalmu dengan Tutor yang akan mengajar. 
+        Setelah kecocokan jadwal dan Tutor sudah berhasil dilakukan, admin akan menghubungimu melalui Official Account Line untuk memberikan jadwal dan tempat belajarmu. 
+        Selamat belajar Tutee :)</div>
+        <div></div><div><br></div><div></div><div><br></div><div>Cheers!</div><div><div><div><div><br>
+        <div dir="ltr" class="gmail_signature"><div dir="ltr"><div><div dir=
+        ="ltr"><font color="#6aa84f" size="6" face="tahoma, sans-serif"><b>
+        Ares</b></font><div><font color="#000000" size="4" face="tahoma, sans-serif"><b>CEO &amp; Co-founder, TamanSiswa</b>
+        </font></div><div><font color="#000000" size="4" face="tahoma, sans-serif"><br></font></div><div>
+        <font color="#000000" face="tahoma, sans-serif">LINE : <a href="http://line.me/ti/p/~tamansiswa" target="_blank">@tamansiswa</a></font></div><div>
+        <font color="#000000" face="tahoma, sans-serif">Instagram : <a href="https://www.instagram.com/tamansiswa_/" target="_blank">@tamansiswa_</a></font></div><div>
+        <font color="#000000" face="tahoma, sans-serif">Email : <a href="mailto:tamansiswa.indo@gmail.com" target="_blank">tamansiswa.indo@gmail.com</a></font></div>
+        <div><font color="#000000" face="tahoma, sans-serif"><br></font></div>
+        <div><font color="#000000" face="tahoma, sans-serif">Taman-Siswa.com</font></div><div>
+        <font color="#000000" face="tahoma, sans-serif">(Available Soon)</font>
+        </div></div></div></div></div></div></div></div></div></div></div>'''
+
+    def send_tutee_matchmaking_form_response(self, email_respondent: str, answers: list):
+        sender_address = 'tamansiswa.indo'
+
+        subject = 'Pencarian Tutor sedang diproses'
+        content = self.generate_html_message(answers)
+        bcc = ['moch.riskyaltaresh@gmail.com', 'nisrina.akalusyamoktika@gmail.com']
+        reply_to = ['tamansiswa.indo+helpdesk@gmail.com']
+        email = self.email_manager.create_email_messsage(
+            subject=subject, body=content, to=[email_respondent], bcc=bcc, reply_to=reply_to)
+        self.email_manager.send_message(email)
+
 class TutorRegistrationNotificationService:
 
     email_manager = GmailManager()
@@ -78,3 +107,5 @@ class TutorRegistrationNotificationService:
         email = self.email_manager.create_email_messsage(
             subject=subject, body=content, to=[email_respondent], bcc=bcc, reply_to=reply_to)
         self.email_manager.send_message(email)
+
+
